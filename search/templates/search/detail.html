@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		{% load static %}
+		{% include 'topbar.html' %}
 		<h1>{{ ad.title }}</h1>
 		<img src="{{ ad.image.url }}" alt="тут должна быть картинка" height="300"/>
 		<h3>{{ ad.description }}</h3>

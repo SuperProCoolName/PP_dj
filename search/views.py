@@ -7,10 +7,6 @@ from .models import Ad
 # Create your views here.
 
 
-def main(request):
-    return render(request, 'search/main.html')
-
-
 class IndexView(generic.ListView):
     template_name = 'search/index.html'
     context_object_name = 'ad_list'

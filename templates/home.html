@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Main page</title>
+		<title>Home</title>
 	</head>
 	<body>
+		{% include 'topbar.html' %}
 		<h1>Главная страница при входе по ссылке!</h1>
 		<h3><a href="{% url 'search:index' %}">Посмотреть объявления</a></h3>
 	</body>
