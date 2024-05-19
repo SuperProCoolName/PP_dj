@@ -11,6 +11,8 @@ class Ad(models.Model):
     price = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100000000)])
     image = models.ImageField(upload_to='ad/%Y/%m/%d/')
-    author = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, blank=True, null=True)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

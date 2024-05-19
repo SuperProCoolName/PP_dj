@@ -12,8 +12,8 @@
 		<img src="{{ ad.image.url }}" alt="тут должна быть картинка" height="300"/>
 		<h3>{{ ad.description }}</h3>
 		<h3>Цена: {{ ad.price }}₽</h3>
-		<h3>Автор: {{ ad.author }}</h3>
 		<h3>Категория: {{ ad.category }}</h3>
+		<h3>Пользователь: {{ ad.user }}</h3>
 
 		<a href="{% url 'search:index' %}">На главную</a>
 </html>

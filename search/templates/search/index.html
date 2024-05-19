@@ -13,6 +13,7 @@
 			<li><a href="{% url 'search:detail' ad.id %}">{{ ad.title }}</a></li>
 			{% endfor %}
 		</ul>
+		<a href="{% url 'search:create_ad' %}">Создать объявление</a>
 		<a href="{% url 'home' %}">Выйти из поиска?</a>
 	</body>
 </html>
