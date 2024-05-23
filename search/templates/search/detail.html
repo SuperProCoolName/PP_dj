@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{{ ad.author }} - {{ ad.title }}</title>
-	</head>
-	<body>
-		{% load static %}
-		{% include 'topbar.html' %}
-		<h1>{{ ad.title }}</h1>
-		<img src="{{ ad.image.url }}" alt="тут должна быть картинка" height="300"/>
-		<h3>{{ ad.description }}</h3>
-		<h3>Цена: {{ ad.price }}₽</h3>
-		<h3>Категория: {{ ad.category }}</h3>
-		<h3>Пользователь: {{ ad.user }}</h3>
+{% extends 'base.html' %} {% block content %}
+<h1>{{ ad.title }}</h1>
+<img src="{{ ad.image.url }}" alt="тут должна быть картинка" height="300" />
+<h3>{{ ad.description }}</h3>
+<h3>Цена: {{ ad.price }}₽</h3>
+<h3>Категория: {{ ad.category }}</h3>
+<h3>Пользователь: {{ ad.user }}</h3>
+{% if ad.user == request.user %}
+<a href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
+<a href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>
+{% endif %}
 
-		<a href="{% url 'search:index' %}">На главную</a>
-</html>
+<a href="{% url 'search:index' %}">На главную</a>
+{% endblock %}

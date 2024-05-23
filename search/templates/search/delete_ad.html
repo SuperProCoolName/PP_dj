@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+<h1>Удалить объявление</h1>
+<p>Вы действительно хотите удалить объявление "{{ ad.title }}"?</p>
+<form method="post">
+	{% csrf_token %}
+	<input type="submit" value="Да, удалить" />
+	<a href="{% url 'search:detail' ad.pk %}">Отмена</a>
+</form>
+{% endblock %}

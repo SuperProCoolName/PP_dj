@@ -5,7 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import Ad
 from .forms import CreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
@@ -50,3 +50,27 @@ class CreateAdView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class DeleteAdView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Ad
+    success_url = reverse_lazy('search:index')
+    template_name = "search/delete_ad.html"
+
+    def test_func(self):
+        ad = self.get_object()
+        return self.request.user == ad.user
+
+
+class UpdateAdView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Ad
+    form_class = CreationForm
+    template_name = 'search/update_ad.html'
+
+    def test_func(self):
+        ad = self.get_object()
+        return self.request.user == ad.user
+
+    def form_valid(self, form):
+        ad = form.save()
+        return redirect(reverse_lazy('search:detail', kwargs={'pk': ad.pk}))
