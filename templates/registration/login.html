@@ -8,8 +8,11 @@
 	<body>
 		<h2>Log In</h2>
 		<form method="post">
-			{% csrf_token %} {{ form }}
+			{% csrf_token %} {{ form.as_p }}
+			<input type="hidden" name="next" value="{{ next }}" />
 			<button type="submit">Log In</button>
+			<a href="{% url 'accounts:signup' %}">Зарегистрироваться</a>
+			<a href="{% url 'home' %}">Отмена</a>
 		</form>
 	</body>
 </html>

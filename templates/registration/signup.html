@@ -10,6 +10,8 @@
 		<form method="post">
 			{% csrf_token %} {{ form }}
 			<button type="submit">Sign Up</button>
+			<a href="{% url 'login' %}">Войти</a>
+			<a href="{% url 'home' %}">Отмена</a>
 		</form>
 	</body>
 </html>

@@ -3,6 +3,8 @@ from django.contrib.auth import logout
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, redirect
+from .forms import UserLoginForm
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 
@@ -20,3 +22,8 @@ class LogoutView(generic.View):
     def post(self, request):
         logout(request)
         return redirect('home')
+
+
+class LoginView(LoginView):
+    form_class = UserLoginForm
+    template_name = 'registration/login.html'

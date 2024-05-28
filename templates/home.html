@@ -1,4 +1,163 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Главная страница при входе по ссылке!</h1>
-<h3><a href="{% url 'search:index' %}">Посмотреть объявления</a></h3>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<main>
+	<section id="hero-section">
+		<div class="container">
+			<div class="hero">
+				<img class="hero__img" src="{% static '/templates/public/img/hero.png' %}" alt="#" />
+				<div class="hero-info">
+					<h2 class="hero__title">
+						Продажа<span>/</span>покупка <br />
+						Коллекционных предметов.
+					</h2>
+					<p class="hero__text"><span>Molin7</span> - это платформа, где вы можете обменивать, продавать и покупать коллекционные предметы, книги и т.д.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="categories-section">
+		<div class="container">
+			<div class="categories-wrapper">
+				<div class="categories-block">
+					<h4 class="categories-block__title">Книги</h4>
+					<a href="#" class="categories-block__subtitle">Посмотреть все</a>
+					<img class="categories__img" src="{% static '/templates/public/img/books.png' %}" alt="#" />
+				</div>
+				<div class="categories__wrap">
+					<div class="categories-block">
+						<h4 class="categories-block__title">Монеты</h4>
+						<a href="#" class="categories-block__subtitle">Посмотреть все</a>
+						<img class="categories__img" src="{% static '/templates/public/img/monets.png' %}" alt="#" />
+					</div>
+					<div class="categories-block">
+						<h4 class="categories-block__title">Фигурки</h4>
+						<a href="#" class="categories-block__subtitle">Посмотреть все</a>
+						<img class="categories__img" src="{% static '/templates/public/img/figurs.png' %}" alt="#" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="new-section">
+		<div class="container">
+			<div class="new">
+				<h2 class="new__title">
+					Новые <br />
+					предметы
+				</h2>
+				<a class="new__link" href="#">Посмотреть все</a>
+			</div>
+			<div class="new__slider">
+				<div class="swiper new-slider">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+						<div class="swiper-slide new-slide">
+							<p class="new__text">НОВОЕ</p>
+							<p class="new__percent">-50%</p>
+							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
+							<span class="new__price">14 000.00₽</span>
+							<span class="new__price old">28 000.00₽</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="pluses-section">
+		<div class="container">
+			<div class="pluses-wrapper">
+				<div class="pluses-block">
+					<img class="pluses__img" src="{% static '/templates/public/favicon/pluses/1' %}.svg" alt="#" />
+					<h4 class="pluses__title">Доставка по России</h4>
+					<p class="pluses__subtitle">Даже в Старый Крым</p>
+				</div>
+				<div class="pluses-block">
+					<img class="pluses__img" src="{% static '/templates/public/favicon/pluses/2' %}.svg" alt="#" />
+					<h4 class="pluses__title">Доступные цены</h4>
+					<p class="pluses__subtitle">Может позволить студент</p>
+				</div>
+				<div class="pluses-block">
+					<img class="pluses__img" src="{% static '/templates/public/favicon/pluses/3' %}.svg" alt="#" />
+					<h4 class="pluses__title">Безопасность</h4>
+					<p class="pluses__subtitle">Всё будет хорошо</p>
+				</div>
+				<div class="pluses-block">
+					<img class="pluses__img" src="{% static '/templates/public/favicon/pluses/4' %}.svg" alt="#" />
+					<h4 class="pluses__title">Поддержка 24/7</h4>
+					<p class="pluses__subtitle">Кроме среды</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="buy-section">
+		<div class="container">
+			<div class="buy">
+				<img class="buy__img" src="{% static '/templates/public/img/ss.jpg' %}" alt="#" />
+				<div class="buy-info">
+					<h2 class="buy__title">
+						Платформа <br />
+						для вас!
+					</h2>
+					<p class="buy__subtitle">Molin7 - это платформа для коллекционеров, где они могут обменивать, продавать и покупать коллекционные предметы, книги и т.д.</p>
+					<a class="buy__link" href="#">Купить сейчас</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
 {% endblock %}
