@@ -1,18 +1,21 @@
 from typing import Any
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class UserLoginForm(AuthenticationForm):
-    def __init__(self, request: Any = ..., *args: Any, **kwargs: Any) -> None:
-        super(UserLoginForm, self).__init__(request, *args, **kwargs)
-
-        username = UsernameField(widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': '', 'id': 'hello'}))
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'input__field', 'placeholder': 'Имя пользователя'}))
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder': '',
-            'id': 'hi',
-        }
-    ))
+        attrs={'class': 'input__field', 'placeholder': 'Пароль', }))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ''  # Удаляем двоеточия после названий полей
+
+    def as_p(self):
+        """Возвращает поля формы, рендеринг без названий полей"""
+        html = ''
+        for field in self.visible_fields():
+            html += f'<p>{field}</p>'
+        return html

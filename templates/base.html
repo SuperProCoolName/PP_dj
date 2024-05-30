@@ -5,18 +5,17 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>{% block title %}Доска объявлений{% endblock %}</title>
-	{% load static %}
 	<link rel="stylesheet" href="{% static '/templates/src/css/style.css' %}" />
+	<script type="module" src="{% static '/templates/src/js/main.js' %}"></script>
+	<script src={% static '/templates/src/js/swiper.js' %}></script>
 </head>
 
 <body>
 	<header>
-		<script type="module" src="{% static '/templates/src/js/main.js' %}"></script>
-		<script src={% static '/templates/src/js/swiper.js' %}></script>
 		<header id="header-section">
 			<div class="container">
 				<div class="header">
-					<h1 class="header__logo">Molin7<span>.</span></h1>
+					<a href={% url 'home' %}><h1 class="header__logo">Molin7<span>.</span></h1></a>
 					<div class="header__navigation">
 						<nav class="header__menu menu">
 							<ul class="menu__body">
@@ -31,12 +30,13 @@
 						</nav>
 					</div>
 					<div class="header__buttons">
-						{% if user.is_authenticated %}
-							<a href="{% url 'accounts:logout' %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
-						{% else %}
-							<a href="{% url 'login' %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
-						{% endif %}
+						<a href="#"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						<a href="#"><img class="header__profile cart" src="{% static '/templates/public/favicon/cart.svg' %}" alt="cart_icon"></a>
+						{% if user.is_authenticated %}
+							<a href="{% url 'accounts:logout' %}" class="register__btn home__btn">Выйти</a>
+						{% else %}
+							<a href="{% url 'accounts:login' %}" class="register__btn home__btn">Войти</a>
+						{% endif %}
 					</div>
 					<div class="menu-icon">
 						<span></span><span></span><span></span>

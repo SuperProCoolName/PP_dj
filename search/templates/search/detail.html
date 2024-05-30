@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block content %}
+
 <h1>{{ ad.title }}</h1>
-<img src="{{ ad.image.url }}" alt="тут должна быть картинка" height="300" />
+<img src="{{ ad.image.url }}" alt="{{ ad.title }}" height="300" />
 <h3>{{ ad.description }}</h3>
 <h3>Цена: {{ ad.price }}₽</h3>
 <h3>Категория: {{ ad.category }}</h3>
 <h3>Пользователь: {{ ad.user }}</h3>
+
 {% if ad.user == request.user %}
 <a href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
 <a href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>

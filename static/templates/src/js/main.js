@@ -42,14 +42,30 @@ const swiper = new Swiper(".new-slider", {
 const filtersButton = document.querySelector(".filters-button");
 const filtersDetails = document.querySelector(".filters-details");
 
+// Устанавливаем начальные стили
+filtersButton.style.visibility = "visible";
+filtersButton.style.opacity = "1";
+filtersButton.style.transition = "opacity 0.5s ease";
+
 // Обработчик события для filters-details
 filtersDetails.addEventListener("click", () => {
-	// Если filtersButton видим, устанавливаем opacity на 0
-	if (filtersButton.style.opacity !== "0") {
+	if (filtersButton.style.visibility === "visible") {
+		// Устанавливаем opacity на 0
 		filtersButton.style.opacity = "0";
-		filtersButton.style.transition = "opacity 0.5s ease"; // Плавная анимация
+
+		// Задержка перед установкой display: none, чтобы дождаться завершения анимации
+		setTimeout(() => {
+			filtersButton.style.visibility = "hidden";
+			filtersButton.style.display = "none";
+		}, 500); // 500ms соответствует времени перехода в transition
 	} else {
-		// Иначе, устанавливаем opacity на 1, чтобы показать filtersButton
-		filtersButton.style.opacity = "1";
+		// Убираем display: none и задаем visibility и opacity
+		filtersButton.style.display = "block";
+
+		// Делаем небольшую задержку перед началом анимации, чтобы браузер успел применить display: block
+		setTimeout(() => {
+			filtersButton.style.visibility = "visible";
+			filtersButton.style.opacity = "1";
+		}, 10); // 10ms для завершения изменения display
 	}
 });

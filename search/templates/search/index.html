@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% comment %} {% block content %}
 <h1>Поиск объявлений!</h1>
 <ul>
 	{% for ad in ad_list %}
@@ -7,4 +7,105 @@
 </ul>
 <a href="{% url 'search:create_ad' %}">Создать объявление</a>
 <a href="{% url 'home' %}">Выйти из поиска?</a>
+{% endblock %} {% endcomment %} {% block content %} {% load static %}
+<section id="search-section">
+	<div class="container">
+		<div class="search">
+			<div class="filters">
+				<div class="filters-details">
+					<span></span><span></span><span></span>
+					<h2 class="filters__title">Фильтры</h2>
+				</div>
+				<div class="filters-button">
+					<div class="filters-price">
+						<h3 class="filters__text">Цена</h3>
+						<input class="filters-price__input" placeholder="Цена от" type="number" name="" id="" />
+						<input class="filters-price__input" placeholder="до, руб" type="number" name="" id="" />
+					</div>
+					<div class="filters-source">
+						<h3 class="filters__text">Источник</h3>
+						<input class="filters-source__input" placeholder="Страна происхождения" type="text" name=""
+							   id="" />
+					</div>
+					<div class="filters-status">
+						<h3 class="filters__text">Состояние</h3>
+						<div class="checkbox-wrapper">
+							<div class="filters__status">
+								<input class="filters__status_input" type="checkbox" />
+								<label for="check" class="filters-status__text">Новое</label>
+							</div>
+							<div class="filters__status">
+								<input class="filters__status_input" type="checkbox" />
+								<label for="check" class="filters-status__text">Требует реставрации</label>
+							</div>
+							<div class="filters__status">
+								<input class="filters__status_input" type="checkbox" />
+								<label for="check" class="filters-status__text">Б/у</label>
+							</div>
+						</div>
+					</div>
+					<div class="filters-author">
+						<h3 class="filters__text">Авторство</h3>
+						<input class="filters-author__input" placeholder="Кем подписан предмет" type="text" name=""
+							   id="" />
+					</div>
+					<div class="filters-sertification">
+						<h3 class="filters__text">Сертификация</h3>
+						<div class="filters-sertification__wrapper">
+							<div class="filters__sertification">
+								<input type="checkbox" />
+								<p class="filters-sertification__text">Да</p>
+							</div>
+							<div class="filters__sertification">
+								<input type="checkbox" />
+								<p class="filters-sertification__text">Нет</p>
+							</div>
+						</div>
+					</div>
+					<div class="filters-description">
+						<h3 class="filters__text">Слова в описании</h3>
+						<input class="filters-description__input" placeholder="Что-то важное для вас" type="text"
+							   name="" id="" />
+					</div>
+					<div class="filters-important">
+						<input class="filters-important__input" type="checkbox" />
+						<p class="filters-important__text">Искать только в названиях</p>
+					</div>
+					<button class="filters__button">Показать объявления</button>
+				</div>
+			</div>
+
+			<div class="catalog">
+				<div class="search-menu">
+					<input class="catalog__search" type="text" />
+					<button class="catalog__search_btn">Найти</button>
+				</div>
+				{% for ad in ad_list %}
+				<a href="{% url 'search:detail' ad.id %}">
+					<div class="search-wrapper">
+						<div class="swiper-slide new-slide catalog-slide">
+							<img class="new__img" src="{{ ad.image.url }}" alt="#"
+								 style="width: 300px; height: 200px; object-fit: cover;" />
+							<h4 class="new-slide__title catalog-slide__title">{{ ad.title }}</h4>
+							<span class="new__price">{{ ad.price }}₽</span>
+				</a>
+			</div>
+			{% endfor %}
+			{% comment %}
+			<div class="search-wrapper">
+				<div class="swiper-slide new-slide catalog-slide">
+					<p class="new__text">НОВОЕ</p>
+					<p class="new__percent">-50%</p>
+					<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
+
+					<h4 class="new-slide__title catalog-slide__title">Пластинка Paul McCartney</h4>
+					<span class="new__price">14 000.00₽</span>
+					<span class="new__price old">28 000.00₽</span>
+				</div>
+				{% endcomment %}
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
 {% endblock %}

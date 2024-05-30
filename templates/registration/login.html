@@ -1,18 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login</title>
+		<title>{% block title %}Login{% endblock %}</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="{% static '/templates/src/css/style.css' %}" />
+	<script type="module" src="{% static '/templates/src/js/main.js' %}"></script>
+	<script src={% static '/templates/src/js/swiper.js' %}></script>
 	</head>
-	<body>
-		<h2>Log In</h2>
-		<form method="post">
-			{% csrf_token %} {{ form.as_p }}
-			<input type="hidden" name="next" value="{{ next }}" />
-			<button type="submit">Log In</button>
-			<a href="{% url 'accounts:signup' %}">Зарегистрироваться</a>
-			<a href="{% url 'home' %}">Отмена</a>
-		</form>
+	<body class="reg-page">
+		<main>
+			<section id="account-section">
+				<div class="container">
+					<div class="register-page">
+						<div class="account">
+							<div class="account-img">
+								<a href="{% url 'home' %}"
+									><h1 class="header__logo account-img__logo">Molin7<span>.</span></h1></a>
+								<img class="account-img__image" src="{% static 'templates/public/img/books.png' %}" alt="#" />
+							</div>
+						</div>
+
+						<form method="post"> {% csrf_token %}
+						<div class="account-register">
+							<h4 class="account-register__title">Вход</h4>
+							<p class="account-register__undertitle">Нет аккаунта? <a class="undertitle__link" href="{% url 'accounts:signup' %}">Регистрация</a></p>
+							<div class="input-wrap">
+								{% autoescape off %}
+									{{ form.as_p }}
+								{% endautoescape %}
+							</div>
+							<div class="remember-wrap">
+								<div class="remember">
+									<input class="remember__input" type="checkbox" name="" id="" />
+									<p class="remember__text">Запомнить меня</p>
+								</div>
+								<a class="forgot__pass" href="#">Забыли пароль?</a>
+							</div>
+							<button class="register__btn" type="submit">Войти</button>
+						</div>
+					</form>
+
+					</div>
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
