@@ -1,12 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout, login
-from django.urls import reverse_lazy
-from django.views import generic
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm
+from django.views import generic
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from search.models import Ad
-from django.contrib.auth.views import LoginView
+from .forms import UserLoginForm
 
 # Create your views here.
 

@@ -30,17 +30,12 @@
 						</nav>
 					</div>
 					<div class="header__buttons">
-						{% if user.is_authenticated %}
+						{% if request.user.is_authenticated %}
 						<a href="{% url 'accounts:profile' user.pk %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						{% else %}
 						<a href="{% url 'accounts:login' %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						{% endif %}
 						<a href="#"><img class="header__profile cart" src="{% static '/templates/public/favicon/cart.svg' %}" alt="cart_icon"></a>
-						{% if request.user.is_authenticated %} 
-							<a href="{% url 'accounts:logout' %}" class="register__btn home__btn">Выйти</a>
-						{% else %}
-							<a href="{% url 'accounts:login' %}" class="register__btn home__btn">Войти</a>
-						{% endif %}
 					</div>
 					<div class="menu-icon">
 						<span></span><span></span><span></span>
