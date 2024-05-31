@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %} Профиль пользователя {{ user.name }} - Molin7 {% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% block content %} {% load static %}
+<main>
+	<section id="cabinet-section">
+		<div class="container">
+			<div class="cabinet-wrapper">
+				<div class="cabinet-profile">
+					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="#" />
+					<p class="cabinet-profile__name">Осман</p>
+					<div class="cabinet-profile_myads">
+						<p class="cabinet-profile__title">Мои объявления</p>
+						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Заказы</a></p>
+						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Избранное</a></p>
+						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Настройки</a></p>
+						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Уведомления</a></p>
+					</div>
+				</div>
+				<div class="cabinet-ads">
+					<h4 class="cabinet-ads__myads">Мои объявления</h4>
+					<div class="search-wrapper">
+						<div class="swiper-slide new-slide catalog-slide">
+							{% for ad in user_ads %}
+							<a href="{% url 'search:detail' ad.pk %}">
+								<img class="new__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="object-fit: cover; height: 350px" />
+								<h4 class="new-slide__title catalog-slide__title">{{ ad.title }}</h4>
+								<span class="new__price">{{ ad.price }}₽</span>
+							</a>
+							{% empty %}
+							<li>Пользователь не опубликовал ни одного объявления.</li>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}

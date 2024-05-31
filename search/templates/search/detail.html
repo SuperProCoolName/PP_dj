@@ -1,16 +1,62 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block title %} {{ ad.title }} - Molin7 {% endblock %} {% block content %} {% load static %}
 
-<h1>{{ ad.title }}</h1>
-<img src="{{ ad.image.url }}" alt="{{ ad.title }}" height="300" />
-<h3>{{ ad.description }}</h3>
-<h3>Цена: {{ ad.price }}₽</h3>
-<h3>Категория: {{ ad.category }}</h3>
-<h3>Пользователь: {{ ad.user }}</h3>
+<main>
+	<section id="item-page-section">
+		<div class="container">
+			<div class="itempage-wrap">
+				<div class="itempage">
+					<div class="filters-details">
+						<span></span><span></span><span></span>
+						<h2 class="filters__title itempage__title">Фильтры</h2>
+					</div>
+				</div>
+				<div class="search-menu itempage__search">
+					<input class="catalog__search" type="text" />
+					<button class="catalog__search_btn">Найти</button>
+				</div>
+			</div>
+			<ul class="itempage-path__list">
+				<li class="itempage-path__item"><a class="itempage-path__link" href="{% url 'home' %}">Главная</a></li>
+				<li class="itempage-path__item"><a class="itempage-path__link" href="{% url 'search:index' %}">Каталог</a></li>
+				<li class="itempage-path__item"><a class="itempage-path__link active" href="#">{{ ad.title }}</a></li>
+			</ul>
+			<div class="item-card">
+				<div class="item-info">
+					<h4 class="item-info__title">{{ ad.title }}</h4>
+					<a class="item-info__favorite" href="#">Добавить в избранное</a>
+					<div class="item-info__img">
+						<img class="item-info__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="width: 400px" /> {% comment %}
+						<div class="item-info__additional">
+							<img src="{% static '/templates/public/img/item-img__small.png' %}" alt="#" />
+							<img src="{% static '/templates/public/img/item-img__small.png' %}" alt="#" />
+							<img src="{% static '/templates/public/img/item-img__small.png' %}" alt="#" />
+						</div>
+						{% endcomment %}
+					</div>
+				</div>
+				<div class="item-seller">
+					<p class="item-seller__price">{{ ad.price }}₽</p>
 
-{% if ad.user == request.user %}
-<a href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
-<a href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>
-{% endif %}
-
-<a href="{% url 'search:index' %}">На главную</a>
+					<button class="item-seller__btn">Написать сообщение</button>
+					<div class="seller-info">
+						<a href="{% url 'accounts:profile' ad.user.id %}">
+							<img class="seller-info__img" src="{% static '/templates/public/img/profile.png' %}" alt="#" />
+							<p class="seller-info__name">{{ ad.user }}</p>
+						</a>
+						{% if ad.user == request.user %}
+						<a href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
+						<a href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="itempage-description">
+				<p class="description__title">Описание</p>
+				<p class="description__text">{{ ad.description }}</p>
+				<p class="description__title">Характеристики</p>
+				<p class="description__text">Состояние: Б/У</p>
+			</div>
+		</div>
+	</section>
+</main>
 {% endblock %}

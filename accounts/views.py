@@ -5,6 +5,7 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm
 from django.contrib.auth.models import User
+from search.models import Ad
 from django.contrib.auth.views import LoginView
 
 # Create your views here.
@@ -41,3 +42,18 @@ class LogoutView(generic.View):
 class LoginView(LoginView):
     form_class = UserLoginForm
     template_name = 'registration/login.html'
+
+
+class UserDetailView(generic.DetailView):
+    model = User
+    template_name = 'accounts/profile.html'
+    context_object_name = 'user'
+
+    def get_object(self):
+        return User.objects.get(pk=self.kwargs.get('pk'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context["user_ads"] = Ad.objects.filter(user=user)
+        return context

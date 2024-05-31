@@ -1,13 +1,4 @@
-{% extends 'base.html' %} {% comment %} {% block content %}
-<h1>Поиск объявлений!</h1>
-<ul>
-	{% for ad in ad_list %}
-	<li class="menu__link"><a href="{% url 'search:detail' ad.id %}">{{ ad.title }}</a></li>
-	{% endfor %}
-</ul>
-<a href="{% url 'search:create_ad' %}">Создать объявление</a>
-<a href="{% url 'home' %}">Выйти из поиска?</a>
-{% endblock %} {% endcomment %} {% block content %} {% load static %}
+{% extends 'base.html' %} {% block title%} Каталог - Molin7 {% endblock %} {% block content %} {% load static %}
 <section id="search-section">
 	<div class="container">
 		<div class="search">
@@ -109,3 +100,14 @@
 	</div>
 </section>
 {% endblock %}
+
+{% comment %} {% block content %}
+<h1>Поиск объявлений!</h1>
+<ul>
+	{% for ad in ad_list %}
+	<li class="menu__link"><a href="{% url 'search:detail' ad.id %}">{{ ad.title }}</a></li>
+	{% endfor %}
+</ul>
+<a href="{% url 'search:create_ad' %}">Создать объявление</a>
+<a href="{% url 'home' %}">Выйти из поиска?</a>
+{% endblock %} {% endcomment %} 

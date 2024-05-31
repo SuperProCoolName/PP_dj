@@ -1206,7 +1206,7 @@ input[type="checkbox"]:checked::after {
 	transform: translateY(-50%);
 	width: 12px;
 	height: 12px;
-	background: url(../../public/favicon/arrow-right.svg) no-repeat;
+	background: url(../../public/img/arrow-right.png) no-repeat;
 }
 .itempage-path__link:hover {
 	color: #363636;
@@ -1224,7 +1224,7 @@ input[type="checkbox"]:checked::after {
 	transform: translateY(-50%);
 	width: 12px;
 	height: 12px;
-	background: url(../../public/favicon/arrow-right.svg) no-repeat;
+	background: url(../../public/img/arrow-right.png) no-repeat;
 }
 
 .item-info__title {
@@ -1260,7 +1260,7 @@ input[type="checkbox"]:checked::after {
 	transform: translateY(-50%);
 	width: 16px;
 	height: 16px;
-	background: url(../../../public/img/heart.png) no-repeat;
+	background: url(../../public/img/heart.png) no-repeat;
 }
 
 .item-card {
