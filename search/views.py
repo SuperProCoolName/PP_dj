@@ -10,6 +10,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
 
+class HomeView(generic.TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Получаем 5 последних объявлений
+        latest_ads = Ad.objects.order_by('-created_at')[:10]
+        context['latest_ads'] = latest_ads
+        return context
+
+
 class IndexView(generic.ListView):
     template_name = 'search/index.html'
     context_object_name = 'ad_list'

@@ -4,4 +4,10 @@ from .models import Ad
 # Register your models here.
 
 
-admin.site.register(Ad)
+class AdAdmin(admin.ModelAdmin):
+    list_display = ('title', 'price')
+    readonly_fields = ('created_at',)
+    search_fields = ('title', 'description')
+
+
+admin.site.register(Ad, AdAdmin)

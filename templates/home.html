@@ -44,75 +44,20 @@
 					Новые <br />
 					предметы
 				</h2>
-				<a class="new__link" href="#">Посмотреть все</a>
+				<a class="new__link" href="{% url 'search:index' %}">Посмотреть все</a>
 			</div>
 			<div class="new__slider">
 				<div class="swiper new-slider">
 					<div class="swiper-wrapper">
+						{% for ad in latest_ads %}
 						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
+							<a href="{% url 'search:detail' ad.pk %}">
+								<img class="new__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="width: 260px; height: 350px; object-fit: cover" />
+								<h4 class="new-slide__title">{{ ad.title }}</h4>
+								<span class="new__price">{{ ad.price }}₽</span>
+							</a>
 						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
-						<div class="swiper-slide new-slide">
-							<p class="new__text">НОВОЕ</p>
-							<p class="new__percent">-50%</p>
-							<img class="new__img" src="{% static '/templates/public/img/new.png' %}" alt="#" />
-							<h4 class="new-slide__title">Пластинка Paul McCartney</h4>
-							<span class="new__price">14 000.00₽</span>
-							<span class="new__price old">28 000.00₽</span>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>

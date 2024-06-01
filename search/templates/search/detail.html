@@ -25,7 +25,8 @@
 					<h4 class="item-info__title">{{ ad.title }}</h4>
 					<a class="item-info__favorite" href="#">Добавить в избранное</a>
 					<div class="item-info__img">
-						<img class="item-info__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="width: 400px" /> {% comment %}
+						<img class="item-info__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="width: 400px" />
+						{% comment %}
 						<div class="item-info__additional">
 							<img src="{% static '/templates/public/img/item-img__small.png' %}" alt="#" />
 							<img src="{% static '/templates/public/img/item-img__small.png' %}" alt="#" />
@@ -50,6 +51,7 @@
 				</div>
 			</div>
 			<div class="itempage-description">
+				<h1>{{ ad.created_at }}</h1>
 				<p class="description__title">Описание</p>
 				<p class="description__text">{{ ad.description }}</p>
 				<p class="description__title">Характеристики</p>
