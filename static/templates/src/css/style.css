@@ -1034,11 +1034,13 @@ input[type="checkbox"]:checked::after {
 }
 
 .search-wrapper {
-	margin-top: 48px;
+	margin-left: 25px;
+	margin-top: 20px;
 	display: flex;
-	align-items: center;
+	align-items: baseline;
+	justify-content: flex-start;
 	flex-wrap: wrap;
-	gap: 10px;
+	/* gap: 10px; */
 }
 
 @media (max-width: 1200px) {
@@ -1089,11 +1091,38 @@ input[type="checkbox"]:checked::after {
 
 .cabinet-wrapper {
 	display: flex;
-	justify-content: space-between;
-	gap: 40px;
+	/* justify-content: space-between; */
+	gap: 100px;
+}
+
+.profile__myad {
+	display: flex;
+	flex-direction: column;
 }
 
 .cabinet-profile {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-ad__title {
+	font-size: 30px;
+	margin-top: 10px;
+}
+
+.profile-ad__price {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.profile-swiper {
+	justify-content: flex-start;
+	gap: 15px;
+	flex-wrap: wrap;
+}
+
+.profile-slide {
+	gap: 15px;
 	display: flex;
 	flex-direction: column;
 }
@@ -1290,6 +1319,8 @@ input[type="checkbox"]:checked::after {
 	padding: 9px 66px;
 	border-radius: 20px;
 	transition: all 0.4s ease-in-out;
+	display: block;
+	margin: 0 auto;
 }
 .item-seller__btn:hover {
 	background: #2daf75;
@@ -1308,6 +1339,11 @@ input[type="checkbox"]:checked::after {
 	line-height: 44px;
 	letter-spacing: -0.4px;
 	color: #000000;
+	text-align: center;
+}
+
+.description__date {
+	font-size: 20px;
 }
 
 .itempage-description {
@@ -1328,6 +1364,124 @@ input[type="checkbox"]:checked::after {
 	line-height: 44px;
 	letter-spacing: -0.4px;
 	color: #605f5f;
+}
+
+.btns {
+	display: flex;
+	gap: 10px;
+}
+
+.delete__ad {
+	background-color: red;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 15px;
+}
+
+.edit__ad {
+	background-color: green;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 15px;
+}
+
+.delete-ad-section,
+#logout-section,
+#createad-section,
+#updatead-section {
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.delete-ad__title,
+.logout__title,
+.createad__title,
+.updatead__title {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.createad-form,
+.updatead-form {
+	margin: 0 auto;
+}
+
+.form-control__title,
+.form-control__desc,
+.form-control__price {
+	margin-bottom: 10px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	outline: none;
+	background: #FFFFFF;
+box-sizing: border-box;
+border: 1px solid #EFF0F6;
+/* External/Input/Default */
+box-shadow: 0px 2px 6px 0px rgba(19, 18, 66, 0.07);
+}
+
+/* .form-control__file {
+	width: 150px;
+	text-align: center;
+	background-color: green;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+} */
+
+.delete-ad__confirm,
+.logout__text {
+	text-align: center;
+}
+
+.form-control__file {}
+
+.delete-ad__form,
+.logout-form,
+.createad-wrap,
+.updatead-wrap {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.delete-ad__btn,
+.logout__confirm,
+.createad__cancel,
+.updatead__cancel {
+	width: 150px;
+	background-color: red;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	text-align: center;
+}
+
+.delete-ad__btn_cancel,
+.logout__cancel,
+.createad__confirm,
+.updatead__confirm {
+	width: 150px;
+	text-align: center;
+	background-color: green;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+}
+
+.profile__img {
+	width: 400px;
+	height: 400px;
 }
 
 @media (max-width: 1200px) {

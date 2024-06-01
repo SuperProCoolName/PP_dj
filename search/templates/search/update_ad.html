@@ -1,8 +1,12 @@
 {% extends 'base.html' %} {% block title%} Редактирование - Molin7 {% endblock %} {% block content %}
-<h1>Редактировать объявление</h1>
-<form method="post" enctype="multipart/form-data">
-	{% csrf_token %} {{ form.as_p }}
-	<input type="submit" value="Сохранить" />
-	<a href="{% url 'search:detail' object.pk %}">Отмена</a>
-</form>
+<section id="updatead-section">
+	<h1 class="updatead__title">Редактировать объявление</h1>
+	<form class="updatead-form" method="post" enctype="multipart/form-data">
+		{% csrf_token %} {% autoescape off %} {{ form.as_p }} {% endautoescape %}
+		<div class="updatead-wrap">
+			<input class="updatead__confirm" type="submit" value="Сохранить" />
+			<a class="updatead__cancel" href="{% url 'search:detail' object.pk %}">Отмена</a>
+		</div>
+	</form>
+</section>
 {% endblock %}

@@ -1,9 +1,11 @@
 {% extends "base.html" %} {% block title%} Удаление - Molin7 {% endblock %} {% block content %}
-<h1>Удалить объявление</h1>
-<p>Вы действительно хотите удалить объявление "{{ ad.title }}"?</p>
-<form method="post">
+<section class="delete-ad-section">
+	<h1 class="delete-ad__title">Удалить объявление</h1>
+<p class="delete-ad__confirm">Вы действительно хотите удалить объявление "{{ ad.title }}"?</p>
+<form class="delete-ad__form" method="post">
 	{% csrf_token %}
-	<input type="submit" value="Да, удалить" />
-	<a href="{% url 'search:detail' ad.pk %}">Отмена</a>
+	<input class="delete-ad__btn" type="submit" value="Да, удалить" />
+	<a class="delete-ad__btn_cancel" href="{% url 'search:detail' ad.pk %}">Отмена</a>
 </form>
+</section>
 {% endblock %}

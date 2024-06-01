@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block title%} Выход из аккаунта - Molin7 {% endblock %} {% block content %}
-<h1>Выйти из аккаунта</h1>
-<p>Вы действительно хотите выйти из своего аккаунта?</p>
+<section id="logout-section">
+	<h1 class="logout__title">Выйти из аккаунта</h1>
+<p class="logout__text">Вы действительно хотите выйти из своего аккаунта?</p>
 <form method="post">
 	{% csrf_token %}
-	<button type="submit">Да, выйти</button>
-	<a href="{% url 'home' %}">Отмена</a>
+	<div class="logout-form">
+		<button class="logout__confirm" type="submit">Да, выйти</button>
+		<a class="logout__cancel" href="{% url 'home' %}">Отмена</a>
+	</div>
 </form>
-{% endblock %} {% comment %}
-<form action="{% url 'logout' %}" method="post">
-	{% csrf_token %}
-	<button type="submit">Выйти</button>
-</form>
-{% endcomment %}
+{% endblock %}
+
+</section>

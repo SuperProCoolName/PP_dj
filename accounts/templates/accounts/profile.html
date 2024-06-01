@@ -25,13 +25,13 @@
 					{% else %}
 					<h4 class="cabinet-ads__myads">Объявления пользователя</h4>
 					{% endif %}
-					<div class="search-wrapper">
-						<div class="swiper-slide new-slide catalog-slide">
+					<div class="search-wrapper profile-swiper">
+						<div class="swiper-slide new-slide catalog-slide profile-slide">
 							{% for ad in user_ads %}
-							<a href="{% url 'search:detail' ad.pk %}">
-								<img class="new__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="object-fit: cover; height: 350px" />
-								<h4 class="new-slide__title catalog-slide__title">{{ ad.title }}</h4>
-								<span class="new__price">{{ ad.price }}₽</span>
+							<a class="profile__myad" href="{% url 'search:detail' ad.pk %}">
+								<img class="new__img profile__img" src="{{ ad.image.url }}" alt="{{ ad.title }}" style="object-fit: cover; height: 350px" />
+								<h4 class="new-slide__title catalog-slide__title profile-ad__title">{{ ad.title }}</h4>
+								<span class="new__price profile-ad__price">{{ ad.price }}₽</span>
 							</a>
 							{% empty %} Пользователь не опубликовал ни одного объявления {% endfor %}
 						</div>

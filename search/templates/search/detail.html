@@ -44,14 +44,16 @@
 							<p class="seller-info__name">{{ ad.user }}</p>
 						</a>
 						{% if ad.user == request.user %}
-						<a href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
-						<a href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>
+						<div class="btns">
+							<a class="delete__ad" href="{% url 'search:delete_ad' ad.pk %}">Удалить объявление</a>
+							<a class="edit__ad" href="{% url 'search:update_ad' ad.pk %}">Редактировать объявление</a>
+						</div>
 						{% endif %}
 					</div>
 				</div>
 			</div>
 			<div class="itempage-description">
-				<h1>{{ ad.created_at }}</h1>
+				<h1 class="description__date">{{ ad.created_at }}</h1>
 				<p class="description__title">Описание</p>
 				<p class="description__text">{{ ad.description }}</p>
 				<p class="description__title">Характеристики</p>

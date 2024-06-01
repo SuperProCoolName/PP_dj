@@ -71,9 +71,10 @@
 					<input class="catalog__search" type="text" />
 					<button class="catalog__search_btn">Найти</button>
 				</div>
-				{% for ad in ad_list %}
-				<a href="{% url 'search:detail' ad.id %}">
+				
 					<div class="search-wrapper">
+						{% for ad in ad_list %}
+				<a href="{% url 'search:detail' ad.id %}">
 						<div class="swiper-slide new-slide catalog-slide">
 							<img class="new__img" src="{{ ad.image.url }}" alt="#"
 								 style="width: 300px; height: 200px; object-fit: cover;" />
