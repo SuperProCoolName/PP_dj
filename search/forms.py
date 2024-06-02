@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import ModelForm, TextInput, Textarea, NumberInput, FileInput
 from .models import Ad
 
 
@@ -8,11 +7,12 @@ class CreationForm(forms.ModelForm):
         model = Ad
         fields = ['title', 'description', 'price', 'image']
         widgets = {
-            'title': TextInput(attrs={'class': 'form-control__title', 'placeholder': 'Введите заголовок'}),
-            'description': Textarea(attrs={'class': 'form-control__desc', 'rows': 3, 'placeholder': 'Введите описание'}),
-            'price': NumberInput(attrs={'class': 'form-control__price', 'placeholder': 'Введите цену'}),
-            'image': FileInput(attrs={'class': 'form-control__file'}),
+            'title': forms.TextInput(attrs={'class': 'form-control__title', 'placeholder': 'Введите заголовок'}),
+            'description': forms.Textarea(attrs={'class': 'form-control__desc', 'rows': 10, 'placeholder': 'Введите описание'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control__price', 'placeholder': 'Введите цену'}),
+            'image': forms.FileInput(attrs={'class': 'form-control__file'}),
         }
+
     def as_p(self):
         """Возвращает поля формы, рендеринг без названий полей"""
         html = ''
