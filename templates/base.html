@@ -24,14 +24,13 @@
 								<li class="menu__item"><a href="{% url 'search:index' %}">Каталог</a></li>
 								<li class="menu__item"><a class="menu__link" href="#">О нас</a></li>
 								<li class="menu__item"><a class="menu__link" href="#">Контакты</a></li>
-								<li class="menu__item"><a class="menu__button"
-									   href="{% url 'search:create_ad' %}">Разместить объявление</a></li>
+								<li class="menu__item"><a class="menu__button" href="{% url 'search:create_ad' %}">Разместить объявление</a></li>
 							</ul>
 						</nav>
 					</div>
 					<div class="header__buttons">
 						{% if request.user.is_authenticated %}
-						<a href="{% url 'accounts:profile' user.pk %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
+						<a href="{% url 'accounts:profile' request.user.pk %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						{% else %}
 						<a href="{% url 'accounts:login' %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						{% endif %}

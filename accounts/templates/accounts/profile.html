@@ -6,18 +6,24 @@
 		<div class="container">
 			<div class="cabinet-wrapper">
 				<div class="cabinet-profile">
-					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="#" />
+					{% if request.user.is_authenticated and request.user == user %}
+					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="{{ user }}" />
 					<p class="cabinet-profile__name">{{ user }}</p>
 					<div class="cabinet-profile_myads">
-						{% if request.user.is_authenticated and request.user == user %}
 						<p class="cabinet-profile__title">Мои объявления</p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Заказы</a></p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Избранное</a></p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Настройки</a></p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Уведомления</a></p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="{% url 'accounts:logout' %}" style="color: red">Выйти из аккаунта</a></p>
-						{% endif %} 
 					</div>
+					{% else %}
+					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="{{}}" />
+					<p class="cabinet-profile__name">{{ user }}</p>
+					<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Написать сообщение</a></p>
+					<p>Присоединился к Molin7</p>
+					<p>{{ user.date_joined|date:"d b Y" }}</p>
+					{% endif %}
 				</div>
 				<div class="cabinet-ads">
 					{% if request.user == user %}
