@@ -1,10 +1,11 @@
 from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from search.models import Ad
-from .forms import UserLoginForm
+from .forms import UserLoginForm, ProfileForm
 
 # Create your views here.
 
@@ -55,3 +56,16 @@ class UserDetailView(generic.DetailView):
         user = self.get_object()
         context["user_ads"] = Ad.objects.filter(user=user)
         return context
+
+
+@login_required
+def profile_edit(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES,
+                           instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:profile', pk=request.user.pk)
+    else:
+        form = ProfileForm(instance=request.user.profile)
+    return render(request, 'accounts/profile_edit.html', {'form': form})

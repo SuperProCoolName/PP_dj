@@ -7,8 +7,10 @@
 			<div class="cabinet-wrapper">
 				<div class="cabinet-profile">
 					{% if request.user.is_authenticated and request.user == user %}
-					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="{{ user }}" />
-					<p class="cabinet-profile__name">{{ user }}</p>
+					<a href="{% url 'accounts:profile_edit' %}">
+						<img class="cabinet-profile__img" src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'default_avatar.png' %}{% endif %}" alt="{{ user }}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%" />
+						<p class="cabinet-profile__name">{{ user }}</p></a
+					>
 					<div class="cabinet-profile_myads">
 						<p class="cabinet-profile__title">Мои объявления</p>
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Заказы</a></p>
@@ -18,7 +20,7 @@
 						<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="{% url 'accounts:logout' %}" style="color: red">Выйти из аккаунта</a></p>
 					</div>
 					{% else %}
-					<img class="cabinet-profile__img" src="{% static '/templates/public/img/profile.png' %}" alt="{{}}" />
+					<img class="cabinet-profile__img" src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'default_avatar.png' %}{% endif %}" alt="{{ user }}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%" />
 					<p class="cabinet-profile__name">{{ user }}</p>
 					<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Написать сообщение</a></p>
 					<p>Присоединился к Molin7</p>

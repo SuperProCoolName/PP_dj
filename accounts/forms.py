@@ -1,6 +1,7 @@
 from typing import Any
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from .models import Profile
 
 
 class UserLoginForm(AuthenticationForm):
@@ -19,3 +20,9 @@ class UserLoginForm(AuthenticationForm):
         for field in self.visible_fields():
             html += f'<p>{field}</p>'
         return html
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar']
