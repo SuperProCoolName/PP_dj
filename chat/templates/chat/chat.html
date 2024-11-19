@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %} Чат с пользователем {{ other_user }} - Molin7 {% endblock %} {% load static %} 
+{% block content %}
+<main>
+	<div class="chat-container">
+		<div class="messages-list" id="messages-container">
+			<button id="load-more" class="load-more-btn">Загрузить предыдущие сообщения</button>
+
+			{% for message in messages %}
+			<div class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+				<p>{{ message.content }}</p>
+				<small>{{ message.timestamp|date:"H:i" }}</small>
+			</div>
+			{% endfor %}
+		</div>
+
+		<form method="post" class="message-form">
+			{% csrf_token %}
+			<input type="text" name="content" placeholder="Введите сообщение..." />
+			<button type="submit">Отправить</button>
+		</form>
+	</div>
+</main>
+{% endblock %}
