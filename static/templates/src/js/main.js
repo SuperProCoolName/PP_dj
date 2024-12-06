@@ -38,6 +38,32 @@ const swiper = new Swiper(".new-slider", {
 	},
 });
 
+
+// ARTICLES SWIPER
+
+const swiperArticles = new Swiper(".articles-slider", {
+    spaceBetween: 20,
+    slidesPerView: 3,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true, // Пользователь сможет кликать по точкам для переключения слайдов
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 3,
+        },
+        480: {
+            slidesPerView: 2,
+        },
+        390: {
+            slidesPerView: 1,
+        },
+        0: {
+            slidesPerView: 1,
+        },
+    },
+});
+
 // Получаем ссылки на элементы
 const filtersButton = document.querySelector(".filters-button");
 const filtersDetails = document.querySelector(".filters-details");

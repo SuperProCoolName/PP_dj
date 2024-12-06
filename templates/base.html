@@ -23,7 +23,7 @@
 								</li>
 								<li class="menu__item"><a href="{% url 'search:index' %}">Каталог</a></li>
 								<li class="menu__item"><a class="menu__link" href="#">О нас</a></li>
-								<li class="menu__item"><a class="menu__link" href="#">Контакты</a></li>
+								<li class="menu__item"><a class="menu__link" href="#">Безопасность</a></li>
 								<li class="menu__item"><a class="menu__button" href="{% url 'search:create_ad' %}">Разместить объявление</a></li>
 							</ul>
 						</nav>
@@ -34,7 +34,7 @@
 						{% else %}
 						<a href="{% url 'accounts:login' %}"><img class="header__profile" src="{% static '/templates/public/favicon/profile.svg' %}" alt="profile_icon"></a>
 						{% endif %}
-						<a href="#"><img class="header__profile cart" src="{% static '/templates/public/favicon/cart.svg' %}" alt="cart_icon"></a>
+						<!-- <a href="#"><img class="header__profile cart" src="{% static '/templates/public/favicon/cart.svg' %}" alt="cart_icon"></a> -->
 					</div>
 					<div class="menu-icon">
 						<span></span><span></span><span></span>
@@ -55,7 +55,7 @@
 						<li class="footer__item"><a class="footer__link" href="{% url 'search:index' %}">Каталог</a>
 						</li>
 						<li class="footer__item"><a class="footer__link" href="#">О нас</a></li>
-						<li class="footer__item"><a class="footer__link" href="#">Контакты</a></li>
+						<li class="footer__item"><a class="footer__link" href="#">Безопасность</a></li>
 					</ul>
 				</div>
 				<div class="footer-copyright">
@@ -64,14 +64,14 @@
 						<a href="#" class="footer-copyright__text">Политика конфидециальности</a>
 						<a href="#" class="footer-copyright__text">Правила пользования</a>
 					</div>
-					<div class="footer-socials">
+					<!-- <div class="footer-socials">
 						<a href="#"><img class="footer__social"
 								 src="{% static '/templates/public/favicon/socials/3.svg' %}" alt="#"></a>
 						<a href="#"><img class="footer__social"
 								 src="{% static '/templates/public/favicon/socials/1.svg' %}" alt="#"></a>
 						<a href="#"><img class="footer__social"
 								 src="{% static '/templates/public/favicon/socials/2.png' %}" alt="#"></a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</footer>
