@@ -37,7 +37,9 @@
 				</div>
 				<div class="item-seller">
 					<p class="item-seller__price">{{ ad.price }}₽</p>
-					<button class="item-seller__btn">Написать сообщение</button>
+					{% if ad.user != request.user %}
+					<a href="{% url 'chat:chat' ad.user.id %}"><button class="item-seller__btn">Написать сообщение</button></a>
+					{% endif %}
 					<div class="seller-info">
 						<a href="{% url 'accounts:profile' ad.user.id %}">
 							<img class="seller-info__img" src="{% if ad.user.profile.avatar %}{{ ad.user.profile.avatar.url }}{% else %}{% static 'default_avatar.png' %}{% endif %}" alt="{{ ad.user }}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%" />

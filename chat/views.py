@@ -19,7 +19,7 @@ def chat_view(request, user_id):
                 receiver=other_user,
                 content=content
             )
-            return redirect('chat', user_id=user_id)
+            return redirect('chat:chat', user_id=user_id)
 
     messages_list = Message.objects.filter(
         Q(sender=request.user, receiver=other_user) |

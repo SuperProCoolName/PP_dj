@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from .models import Ad
 from .forms import CreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
+from django.db.models.functions import Lower
 
 # Create your views here.
 
@@ -26,7 +28,50 @@ class IndexView(generic.ListView):
     context_object_name = 'ad_list'
 
     def get_queryset(self):
-        return Ad.objects.all()
+        queryset = Ad.objects.all()
+
+        quick_search = self.request.GET.get('quick_search')
+
+        if quick_search:
+            quick_search = quick_search.lower()
+            queryset = queryset.filter(
+                Q(title__icontains=quick_search) |
+                Q(description__icontains=quick_search)
+            )
+
+        # Получаем параметры из GET запроса
+        min_price = self.request.GET.get('price_from')
+        max_price = self.request.GET.get('price_to')
+        # source = self.request.GET.get('source')
+        # condition = self.request.GET.getlist('condition')
+        # author = self.request.GET.get('author')
+        # certification = self.request.GET.get('certification')
+        description = self.request.GET.get('description')
+        title_only = self.request.GET.get('title_only')
+        # Применяем фильтры
+        if min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        if max_price:
+            queryset = queryset.filter(price__lte=max_price)
+        # if source:
+        #     queryset = queryset.filter(source__icontains=source)
+        # if condition:
+        #     queryset = queryset.filter(condition__in=condition)
+        # if author:
+        #     queryset = queryset.filter(author__icontains=author)
+        # if certification:
+        #     queryset = queryset.filter(certification=certification)
+        if description:
+            description = description.lower()
+            if title_only:
+                queryset = queryset.filter(title__icontains=description)
+            else:
+                queryset = queryset.filter(
+                    Q(description__icontains=description) |
+                    Q(title__icontains=description)
+                )
+
+        return queryset
 
 
 class DetailView(generic.DetailView):

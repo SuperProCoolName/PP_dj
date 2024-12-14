@@ -7,70 +7,55 @@
 					<span></span><span></span><span></span>
 					<h2 class="filters__title">Фильтры</h2>
 				</div>
-				<div class="filters-button">
+				<form method="GET" class="filters-button">
 					<div class="filters-price">
 						<h3 class="filters__text">Цена</h3>
-						<input class="filters-price__input" placeholder="Цена от" type="number" name="" id="" />
-						<input class="filters-price__input" placeholder="до, руб" type="number" name="" id="" />
+						<input class="filters-price__input" placeholder="Цена от" type="number" name="price_from" />
+						<input class="filters-price__input" placeholder="до, руб" type="number" name="price_to" />
 					</div>
 					<div class="filters-source">
 						<h3 class="filters__text">Источник</h3>
-						<input class="filters-source__input" placeholder="Страна происхождения" type="text" name=""
-							   id="" />
+						<input class="filters-source__input" placeholder="Страна происхождения" type="text" name="source" />
 					</div>
 					<div class="filters-status">
 						<h3 class="filters__text">Состояние</h3>
 						<div class="checkbox-wrapper">
 							<div class="filters__status">
-								<input class="filters__status_input" type="checkbox" />
-								<label for="check" class="filters-status__text">Новое</label>
+								<input class="filters__status_input" type="checkbox" name="condition" value="new" />
+								<label class="filters-status__text">Новое</label>
 							</div>
 							<div class="filters__status">
-								<input class="filters__status_input" type="checkbox" />
-								<label for="check" class="filters-status__text">Требует реставрации</label>
+								<input class="filters__status_input" type="checkbox" name="condition" value="restoration" />
+								<label class="filters-status__text">Требует реставрации</label>
 							</div>
 							<div class="filters__status">
-								<input class="filters__status_input" type="checkbox" />
-								<label for="check" class="filters-status__text">Б/у</label>
+								<input class="filters__status_input" type="checkbox" name="condition" value="used" />
+								<label class="filters-status__text">Б/у</label>
 							</div>
 						</div>
 					</div>
 					<div class="filters-author">
 						<h3 class="filters__text">Авторство</h3>
-						<input class="filters-author__input" placeholder="Кем подписан предмет" type="text" name=""
-							   id="" />
-					</div>
-					<div class="filters-sertification">
-						<h3 class="filters__text">Сертификация</h3>
-						<div class="filters-sertification__wrapper">
-							<div class="filters__sertification">
-								<input type="checkbox" />
-								<p class="filters-sertification__text">Да</p>
-							</div>
-							<div class="filters__sertification">
-								<input type="checkbox" />
-								<p class="filters-sertification__text">Нет</p>
-							</div>
-						</div>
+						<input class="filters-author__input" placeholder="Кем подписан предмет" type="text" name="author" />
 					</div>
 					<div class="filters-description">
 						<h3 class="filters__text">Слова в описании</h3>
-						<input class="filters-description__input" placeholder="Что-то важное для вас" type="text"
-							   name="" id="" />
+						<input class="filters-description__input" placeholder="Что-то важное для вас" type="text" name="description" />
 					</div>
 					<div class="filters-important">
-						<input class="filters-important__input" type="checkbox" />
+						<input class="filters-important__input" type="checkbox" name="title_only" />
 						<p class="filters-important__text">Искать только в названиях</p>
 					</div>
-					<button class="filters__button">Показать объявления</button>
-				</div>
+					<button type="submit" class="filters__button">Показать объявления</button>
+				</form>
 			</div>
-
 			<div class="catalog">
 				<div class="search-menu">
-					<input class="catalog__search" type="text" />
-					<button class="catalog__search_btn">Найти</button>
-				</div>
+	<form method="GET" class="quick-search-form">
+		<input class="catalog__search" type="text" name="quick_search" value="{{ request.GET.quick_search }}" />
+		<button type="submit" class="catalog__search_btn">Найти</button>
+	</form>
+</div>
 				
 					<div class="search-wrapper">
 						{% for ad in ad_list %}

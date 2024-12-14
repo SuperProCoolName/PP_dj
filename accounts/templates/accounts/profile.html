@@ -22,7 +22,7 @@
 					{% else %}
 					<img class="cabinet-profile__img" src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'default_avatar.png' %}{% endif %}" alt="{{ user }}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%" />
 					<p class="cabinet-profile__name">{{ user }}</p>
-					<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="#">Написать сообщение</a></p>
+					<p class="cabinet-profile__item"><a class="cabinet-profile__link" href="{% url 'chat:chat' user.id %}">Написать сообщение</a></p>
 					<p>Присоединился к Molin7</p>
 					<p>{{ user.date_joined|date:"d b Y" }}</p>
 					{% endif %}
