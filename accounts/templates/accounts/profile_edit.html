@@ -1,7 +1,11 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Редактировать профиль</h2>
-<form method="post" enctype="multipart/form-data">
-	{% csrf_token %} {{ form.as_p }}
-	<button type="submit">Сохранить</button>
-</form>
+<section id="createad-section">
+  <h2 class="createad__title">Редактировать профиль</h2>
+  <form class="createad-form" method="post" enctype="multipart/form-data">
+    <div class="edit-profile">
+      {% csrf_token %} {{ form.as_p }}
+      <button class="edit__btn" type="submit">Сохранить</button>
+    </div>
+  </form>
+</section>
 {% endblock %}
