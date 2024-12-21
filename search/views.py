@@ -22,6 +22,17 @@ class HomeView(generic.TemplateView):
         context['latest_ads'] = latest_ads
         return context
 
+class AboutView(generic.TemplateView):
+    template_name = 'about.html'
+
+class SecurityView(generic.TemplateView):
+    template_name = 'security.html' 
+
+class Article1View(generic.TemplateView):
+    template_name = 'article1.html' 
+
+class Article2View(generic.TemplateView):
+    template_name = 'article2.html' 
 
 class IndexView(generic.ListView):
     template_name = 'search/index.html'

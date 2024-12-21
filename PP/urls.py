@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from search.views import HomeView
+from search.views import AboutView
+from search.views import SecurityView
+from search.views import Article1View
+from search.views import Article2View
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
@@ -24,6 +28,10 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('about', AboutView.as_view(), name='about'),
+    path('security', SecurityView.as_view(), name='security'),
+    path('article1', Article1View.as_view(), name='article1'),
+    path('article2', Article2View.as_view(), name='article2'),
     path('search/', include('search.urls')),
     path('accounts/', include('accounts.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
